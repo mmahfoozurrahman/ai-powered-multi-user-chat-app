@@ -23,6 +23,7 @@ class AiSettingsService
     {
         return [
             'active_model' => config('services.groq.model', 'qwen/qwen3-32b'),
+            'reasoning_effort' => 'medium',
             'groq_api_key' => config('services.groq.api_key'),
             'system_prompt' => AssistantPrompt::CONTENT,
             'context_window' => 131072,

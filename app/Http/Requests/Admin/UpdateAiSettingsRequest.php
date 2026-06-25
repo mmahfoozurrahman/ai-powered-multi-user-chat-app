@@ -15,6 +15,7 @@ class UpdateAiSettingsRequest extends FormRequest
     {
         return [
             'active_model' => ['required', 'string', 'max:255'],
+            'reasoning_effort' => ['required', 'string', 'in:low,medium,high'],
             'groq_api_key' => ['nullable', 'string', 'max:5000'],
             'system_prompt' => ['required', 'string', 'min:20'],
             'context_window' => ['required', 'integer', 'min:1024'],

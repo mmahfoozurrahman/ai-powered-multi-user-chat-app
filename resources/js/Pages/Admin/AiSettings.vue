@@ -17,6 +17,7 @@ const props = defineProps({
 
 const form = useForm({
     active_model: props.settings.active_model ?? 'qwen/qwen3-32b',
+    reasoning_effort: props.settings.reasoning_effort ?? 'medium',
     groq_api_key: '',
     system_prompt: props.settings.system_prompt ?? '',
     context_window: props.settings.context_window ?? 131072,
@@ -64,6 +65,27 @@ const submit = () => {
                                 :error="form.errors.active_model"
                                 help="This model ID will be used by the Groq service for future chat requests."
                             />
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="reasoning_effort" class="form-label auth-form__label">Reasoning Effort</label>
+                            <select
+                                id="reasoning_effort"
+                                v-model="form.reasoning_effort"
+                                class="form-control auth-form__input"
+                                :class="{ 'is-invalid': form.errors.reasoning_effort }"
+                            >
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <div v-if="form.errors.reasoning_effort" class="auth-form__error">
+                                <i class="bi bi-exclamation-circle me-2"></i>
+                                {{ form.errors.reasoning_effort }}
+                            </div>
+                            <div v-else class="auth-form__help">
+                                Used for models like <code>openai/gpt-oss-*</code>. Other models keep working and simply ignore this setting.
+                            </div>
                         </div>
 
                         <div class="col-12">

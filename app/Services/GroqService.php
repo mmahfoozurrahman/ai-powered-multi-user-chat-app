@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Support\AssistantPrompt;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Client\ConnectionException;
@@ -171,10 +170,11 @@ class GroqService
 
     private function payload(string $model, array $messages): array
     {
-        return [
+        $settings = app(AiSettingsService::class)->current();
+
+        $payload = [
             'model' => $model,
             'reasoning_format' => 'hidden',
-            'reasoning_effort' => 'none',
             'messages' => [
                 [
                     'role' => 'system',
@@ -183,6 +183,17 @@ class GroqService
                 ...$messages,
             ],
         ];
+
+        if ($this->supportsReasoningEffort($model)) {
+            $payload['reasoning_effort'] = $settings->reasoning_effort ?: 'medium';
+        }
+
+        return $payload;
+    }
+
+    private function supportsReasoningEffort(string $model): bool
+    {
+        return str_starts_with($model, 'openai/gpt-oss-');
     }
 
     private function normalizeContent(string $content): string

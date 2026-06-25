@@ -1,0 +1,218 @@
+{
+  "_AppButton--17F5wOP.js": {
+    "file": "assets/AppButton--17F5wOP.js",
+    "name": "AppButton",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_AppInput-yDT8UIbe.js": {
+    "file": "assets/AppInput-yDT8UIbe.js",
+    "name": "AppInput",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_AppLayout-B2ewbv3v.js": {
+    "file": "assets/AppLayout-B2ewbv3v.js",
+    "name": "AppLayout",
+    "imports": [
+      "resources/js/app.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "_ChatWorkspace-Bu1sFZCQ.js": {
+    "file": "assets/ChatWorkspace-Bu1sFZCQ.js",
+    "name": "ChatWorkspace",
+    "imports": [
+      "resources/js/app.js",
+      "_AppButton--17F5wOP.js"
+    ]
+  },
+  "_GuestLayout-DXENg088.js": {
+    "file": "assets/GuestLayout-DXENg088.js",
+    "name": "GuestLayout",
+    "imports": [
+      "_useFlashAlerts-Dz8jmQY2.js",
+      "resources/js/app.js"
+    ]
+  },
+  "_useFlashAlerts-Dz8jmQY2.js": {
+    "file": "assets/useFlashAlerts-Dz8jmQY2.js",
+    "name": "useFlashAlerts",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-BeopsB42.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-mSm7cUeB.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "resources/js/Pages/Admin/AiSettings.vue": {
+    "file": "assets/AiSettings-D0VVyH8D.js",
+    "name": "AiSettings",
+    "src": "resources/js/Pages/Admin/AiSettings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Users.vue": {
+    "file": "assets/Users-DG7d49mW.js",
+    "name": "Users",
+    "src": "resources/js/Pages/Admin/Users.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.vue": {
+    "file": "assets/ForgotPassword-Ch-dfiIl.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-DXENg088.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.vue": {
+    "file": "assets/Login-iXK-Lzfl.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-DXENg088.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.vue": {
+    "file": "assets/Register-CnmOJG_5.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-DXENg088.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.vue": {
+    "file": "assets/ResetPassword-f19ZzL1m.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-DXENg088.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Chat/Index.vue": {
+    "file": "assets/Index-C9Q9v0EB.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Chat/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_ChatWorkspace-Bu1sFZCQ.js",
+      "_useFlashAlerts-Dz8jmQY2.js",
+      "_AppButton--17F5wOP.js"
+    ]
+  },
+  "resources/js/Pages/Chat/Show.vue": {
+    "file": "assets/Show-zq3s8C5H.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Chat/Show.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_ChatWorkspace-Bu1sFZCQ.js",
+      "_useFlashAlerts-Dz8jmQY2.js",
+      "_AppButton--17F5wOP.js"
+    ]
+  },
+  "resources/js/Pages/Landing.vue": {
+    "file": "assets/Landing-CgSvOaee.js",
+    "name": "Landing",
+    "src": "resources/js/Pages/Landing.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-DXENg088.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Settings/Index.vue": {
+    "file": "assets/Index-tF3U6CSp.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Settings/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_AppButton--17F5wOP.js",
+      "_AppInput-yDT8UIbe.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/Pages/Usage/Index.vue": {
+    "file": "assets/Index-BHIMIIwM.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Usage/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_AppLayout-B2ewbv3v.js",
+      "_useFlashAlerts-Dz8jmQY2.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DVZijwtf.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/AiSettings.vue",
+      "resources/js/Pages/Admin/Users.vue",
+      "resources/js/Pages/Auth/ForgotPassword.vue",
+      "resources/js/Pages/Auth/Login.vue",
+      "resources/js/Pages/Auth/Register.vue",
+      "resources/js/Pages/Auth/ResetPassword.vue",
+      "resources/js/Pages/Chat/Index.vue",
+      "resources/js/Pages/Chat/Show.vue",
+      "resources/js/Pages/Landing.vue",
+      "resources/js/Pages/Settings/Index.vue",
+      "resources/js/Pages/Usage/Index.vue"
+    ]
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app-CGsW4eI0.css",
+    "src": "resources/scss/app.scss",
+    "isEntry": true
+  }
+}

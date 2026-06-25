@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Chat;
 
+use App\Models\AiSetting;
 use App\Models\Conversation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -117,5 +118,107 @@ class ConversationFlowTest extends TestCase
             ->assertSessionHas('error');
 
         $this->assertDatabaseCount('messages', 0);
+    }
+
+    public function test_openai_gpt_oss_requests_include_configured_reasoning_effort(): void
+    {
+        config()->set('services.groq.api_key', 'test-key');
+
+        AiSetting::query()->create([
+            'active_model' => 'openai/gpt-oss-120b',
+            'reasoning_effort' => 'high',
+            'groq_api_key' => 'test-key',
+            'system_prompt' => 'You are a focused Laravel assistant that always writes safe production-ready code.',
+            'context_window' => 8192,
+            'max_output_tokens' => 4096,
+            'reserved_completion_tokens' => 1024,
+            'provider_reference_rpm' => 30,
+            'provider_reference_rpd' => 1000,
+            'provider_reference_tpm' => 8000,
+            'provider_reference_tpd' => 200000,
+            'free_daily_message_limit' => 40,
+            'free_daily_token_limit' => 6000,
+            'free_monthly_token_limit' => 50000,
+        ]);
+
+        Http::fake([
+            'https://api.groq.com/openai/v1/chat/completions' => Http::response([
+                'choices' => [[
+                    'message' => [
+                        'content' => 'Reasoning request succeeded.',
+                    ],
+                ]],
+                'usage' => [
+                    'prompt_tokens' => 10,
+                    'completion_tokens' => 12,
+                    'total_tokens' => 22,
+                ],
+            ]),
+        ]);
+
+        $user = User::factory()->create();
+        $conversation = Conversation::factory()->for($user)->create();
+
+        $this->actingAs($user)
+            ->post(route('conversations.messages.store', $conversation), [
+                'content' => 'Test openai reasoning effort',
+            ])
+            ->assertRedirect(route('chat.show', $conversation));
+
+        Http::assertSent(function ($request) {
+            return $request['model'] === 'openai/gpt-oss-120b'
+                && $request['reasoning_effort'] === 'high';
+        });
+    }
+
+    public function test_non_openai_models_do_not_send_reasoning_effort(): void
+    {
+        config()->set('services.groq.api_key', 'test-key');
+
+        AiSetting::query()->create([
+            'active_model' => 'qwen/qwen3-32b',
+            'reasoning_effort' => 'high',
+            'groq_api_key' => 'test-key',
+            'system_prompt' => 'You are a focused Laravel assistant that always writes safe production-ready code.',
+            'context_window' => 8192,
+            'max_output_tokens' => 4096,
+            'reserved_completion_tokens' => 1024,
+            'provider_reference_rpm' => 30,
+            'provider_reference_rpd' => 1000,
+            'provider_reference_tpm' => 8000,
+            'provider_reference_tpd' => 200000,
+            'free_daily_message_limit' => 40,
+            'free_daily_token_limit' => 6000,
+            'free_monthly_token_limit' => 50000,
+        ]);
+
+        Http::fake([
+            'https://api.groq.com/openai/v1/chat/completions' => Http::response([
+                'choices' => [[
+                    'message' => [
+                        'content' => 'Qwen request succeeded.',
+                    ],
+                ]],
+                'usage' => [
+                    'prompt_tokens' => 10,
+                    'completion_tokens' => 12,
+                    'total_tokens' => 22,
+                ],
+            ]),
+        ]);
+
+        $user = User::factory()->create();
+        $conversation = Conversation::factory()->for($user)->create();
+
+        $this->actingAs($user)
+            ->post(route('conversations.messages.store', $conversation), [
+                'content' => 'Test qwen request',
+            ])
+            ->assertRedirect(route('chat.show', $conversation));
+
+        Http::assertSent(function ($request) {
+            return $request['model'] === 'qwen/qwen3-32b'
+                && ! array_key_exists('reasoning_effort', $request->data());
+        });
     }
 }

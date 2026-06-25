@@ -8,6 +8,7 @@ class AiSetting extends Model
 {
     protected $fillable = [
         'active_model',
+        'reasoning_effort',
         'groq_api_key',
         'system_prompt',
         'context_window',

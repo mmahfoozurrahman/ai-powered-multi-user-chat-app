@@ -35,6 +35,7 @@ class AiSettingsTest extends TestCase
         $this->actingAs($admin)
             ->patch('/admin/ai-settings', [
                 'active_model' => 'openai/gpt-oss-20b',
+                'reasoning_effort' => 'high',
                 'groq_api_key' => 'groq-secret-key',
                 'system_prompt' => 'You are a focused Laravel assistant that always writes safe production-ready code.',
                 'context_window' => 8192,
@@ -52,6 +53,7 @@ class AiSettingsTest extends TestCase
 
         $this->assertDatabaseHas('ai_settings', [
             'active_model' => 'openai/gpt-oss-20b',
+            'reasoning_effort' => 'high',
             'context_window' => 8192,
             'free_daily_message_limit' => 40,
             'free_daily_token_limit' => 6000,
@@ -59,6 +61,7 @@ class AiSettingsTest extends TestCase
         ]);
 
         $this->assertSame('openai/gpt-oss-20b', AiSetting::query()->first()->active_model);
+        $this->assertSame('high', AiSetting::query()->first()->reasoning_effort);
         $this->assertSame(
             'You are a focused Laravel assistant that always writes safe production-ready code.',
             AiSetting::query()->first()->system_prompt
